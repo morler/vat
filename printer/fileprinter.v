@@ -16,9 +16,12 @@ pub fn new_file_printer(filepath string) &FilePrinter {
 pub fn (fp FilePrinter) print() {
 	mut stdout := os.stdout()
 
-	file := os.open_file(fp.filepath, 'rb') or {
+	mut file := os.open_file(fp.filepath, 'rb') or {
 		vaterror.fatalln_file_error(fp.filepath, .permission_denied)
 		return
+	}
+	defer {
+		file.close()
 	}
 
 	mut buf := []u8{len: buf_size, cap: buf_size}

@@ -143,11 +143,17 @@ fn (mut lp LinePrinter) process_chars(s string) string {
 			} else if ch >= 128 {
 				result << `M`
 				result << `-`
-				if ch >= 128 + 32 {
-					result << ch - 128
-				} else {
+				mut high_byte := ch - 128
+				if high_byte >= 32 && high_byte < 127 {
+					result << high_byte
+				} else if high_byte == 127 {
 					result << `^`
-					result << ch - 128 + 64
+					result << `?`
+				} else if high_byte < 32 {
+					result << `^`
+					result << high_byte + 64
+				} else {
+					result << `?`
 				}
 			} else {
 				result << ch
