@@ -16,7 +16,7 @@ fn main() {
 			'It does only concatenate to stdout.\n' +
 			'Also (unsurprisingly) - this implementation is slower.'
 		version: '0.1'
-		execute: fn (cmd cli.Command) ? {
+		execute: fn (cmd cli.Command) ! {
 			run_vat(cmd.args)
 			return
 		}

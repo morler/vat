@@ -16,13 +16,13 @@ pub fn (sp StdinPrinter) print() {
 
 	// read_bytes_into requires the buffer's length to be greater than 0.
 	// Also set cap to buf_size so there are no reallocations.
-	mut buf := []byte{len: buf_size, cap: buf_size}
+	mut buf := []u8{len: buf_size, cap: buf_size}
 
 	for {
 		// This reads and blocks until the buffer is full or EOF.
-		nbytes := file.read_bytes_into_newline(mut buf) or {
+		nbytes := file.read_bytes_into(0, mut buf) or {
 			vaterror.fatalln_file_error(file.str(), .cannot_read)
-			0
+			break
 		}
 		if nbytes == 0 {
 			break

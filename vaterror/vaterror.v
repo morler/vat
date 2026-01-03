@@ -1,20 +1,18 @@
 module vaterror
 
-const (
-	identifier            = 'vat'
+const identifier = 'vat'
 
-	colon                 = ': '
+const colon = ': '
 
-	not_exists_str        = 'No such file or directory'
+const not_exists_str = 'No such file or directory'
 
-	is_directory_str      = 'Is a directory'
+const is_directory_str = 'Is a directory'
 
-	cannot_read_str       = 'Cannot read file'
+const cannot_read_str = 'Cannot read file'
 
-	cannot_write_str      = 'Cannot write to file'
+const cannot_write_str = 'Cannot write to file'
 
-	permission_denied_str = 'Permission denied'
-)
+const permission_denied_str = 'Permission denied'
 
 pub enum FileError {
 	not_exists

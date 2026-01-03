@@ -23,7 +23,7 @@ pub fn (fp FilePrinter) print() {
 
 	// read_bytes_into requires the buffer's length to be greater than 0.
 	// Also set cap to buf_size so there are no reallocations.
-	mut buf := []byte{len: buf_size, cap: buf_size}
+	mut buf := []u8{len: buf_size, cap: buf_size}
 
 	for pos := u64(0); pos < fp.filesize; pos += buf_size {
 		nbytes := file.read_bytes_into(pos, mut buf) or {
